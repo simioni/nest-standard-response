@@ -718,10 +718,10 @@ The params object injected with @StandardParam() contains these keys:
 
 <table style="width: 100%">
   <tr>
-    <th>Operation<th>
-    <th>Description<th>
-    <th>URL Encoded Form<th>
-    <th>Example<th>
+    <th>Operation</th>
+    <th>Description</th>
+    <th>URL Encoded Form</th>
+    <th>Example</th>
   </tr>
   <tr>
     <td>==</td>
