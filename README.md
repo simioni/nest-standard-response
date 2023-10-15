@@ -267,26 +267,6 @@ async listBooks(
 * [Advanced Configuration](#StandardResponseConfiguration)
 
 </br>
-
-To set up, just add ```StandardResponseModule.forRoot()``` in the imports array of your application module.
-
-```ts
-@Module({
-  imports: [
-    StandardResponseModule.forRoot(),
-  ],
-  controllers: [AppController],
-  providers: [AppService],
-})
-export class AppModule {}
-```
-
-</br>
-
-> This is a dynamic module. It can also accept a configuration object like this:  
-> ```StandardResponseModule.forRoot(options: {})```  
-> For options, see [advanced configuration](#StandardResponseConfiguration).  
-
 </br>
 </br>
 
