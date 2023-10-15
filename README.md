@@ -238,12 +238,45 @@ async listBooks(
   sorting: {
     sortableFields: ["title", "author"],
     query: "-author,title",
-    sort: {}
+    sort: [
+      {
+        field: "author",
+        order: "des"
+      },
+      {
+        field: "title",
+        order: "asc"
+      }
+    ]
   },
   filtering: {
     filterableFields: ["author", "year"],
     query: "author^=Frank;year>=1960;year>=1970",
-    filter: {}
+    filter: {
+      allOf: [
+        { anyOf: [
+          {
+            field: 'author',
+            operation: '^=',
+            value: "Frank"
+          },
+        ]},
+        { anyOf: [
+          {
+            field: 'year',
+            operation: '>=',
+            value: 1960
+          },
+        ]},
+        { anyOf: [
+          {
+            field: 'year',
+            operation: '<=',
+            value: 1970
+          },
+        ]}
+      ]
+    }
   },
   data: [ ... ]
 }
