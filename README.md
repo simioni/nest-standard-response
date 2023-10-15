@@ -180,7 +180,7 @@ For example, calling this route as:
 
 <table style="width: 100%">
 <tr>
-<td>
+<td style="vertical-align: top;">
 
 ```ts
 // route
