@@ -152,7 +152,8 @@ async listBooks(
     limit: 10,
     offset: 0,
     defaultLimit: 10,
-    count: 33 // <- added in handler
+    // 👇 added in handler
+    count: 33
   },
   data: [
     { title: "Dune", year: 1965 },
@@ -160,7 +161,6 @@ async listBooks(
     { title: "Emma", year: 1815 },
   ]
 }
-
 ```
 
 </td>
