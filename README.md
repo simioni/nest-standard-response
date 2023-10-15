@@ -108,11 +108,11 @@ So interceptors like ```ClassSerializer``` and ```RoleSerializer``` work transpa
 Just decorate a route with [@StandardResponse({...options})](#StandardResponseDecorator) and pass in the options you want. Adding features will:
 
 - Automatically prepare a route to receive query parameters for that feature;
-- Parse and validate the input of these query parameters, and make them injectable in the handler;
+- Parse and validate the input of these query parameters, and make them injectable into the handler;
 - Add fields to the response object to let the client know the state of these features (and to allow discoverability of defaults when the route is called without any query params);
 - Add documentation to Swagger with fully qualified schemas and examples;
 
-To access this information during the request, use the [@StandardParam()](#StandardParamDecorator) parameter decorator to inject a params object into your handler.
+To access this information during the request, use the [@StandardParam()](#StandardParamDecorator) parameter decorator to inject a params object into your handler. This object contains the parsed  query params, all configuration values set for StandardResponse, plus methods to manipulate how this data shows up in the response.
 
 <table style="width: 100%">
 <tr>
@@ -127,7 +127,10 @@ To access this information during the request, use the [@StandardParam()](#Stand
 async listBooks(
   @StandardParam() params: StandardParams
 ): BookDto[] {
-  const { books, count } = await this.bookService.list({
+  const {
+    books,
+    count
+  } = await this.bookService.list({
     // already validated values safe to use
     limit: params.pagination.limit,
     offset: params.pagination.offset,
@@ -159,6 +162,9 @@ async listBooks(
     { title: "Emma", year: 1815 },
   ]
 }
+
+
+
 ```
 
 </td>
