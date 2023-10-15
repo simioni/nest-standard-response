@@ -460,6 +460,32 @@ export class UsersController {
 
 </br>
 
+## 🟠 &nbsp;  @RawResponse() <a name="RawResponseDecorator"></a>
+
+<br />
+
+The default behavior of StandardResponse is to wrap the response from all routes application wide. This keeps the API consistent and predictable. However, if you need to skip this behavior for a particular route, just set the ```@RawResponse()``` decorator:
+
+```ts
+@Controller('external-api-integration')
+export class ExternalApiIntegrationController {
+  @Get('/')
+  @RawResponse() // <--- will skip wrapping
+  async findAll(): Promise<SomeCustomObject> {
+    return customObject;
+  }
+}
+```
+
+
+If you're adding StandardResponse into an existing app, it might be useful to invert this behavior to create a gradual transition path. To do this, set the ```interceptAll``` option to ```false``` when importing the ```StandardResponseModule``` in your application. This way, routes will only be wrapped if they have explicitly set the ```@StandardResponse()``` decorator. See more information in the "Configuring" section bellow.
+
+</br>
+
+---------------------------------------------------
+
+</br>
+
 ## 🟠 &nbsp; @StandardParam() <a name="StandardParamDecorator"></a>
 
 <br />
@@ -833,36 +859,10 @@ The resulting parsed object from this query will be:
 ---------------------------------------------------
 
 </br>
-
-## 🟠 &nbsp;  @RawResponse() <a name="RawResponseDecorator"></a>
-
-<br />
-
-The default behavior of StandardResponse is to wrap the response from all routes application wide. This keeps the API consistent and predictable. However, if you need to skip this behavior for a particular route, just set the ```@RawResponse()``` decorator:
-
-```ts
-@Controller('external-api-integration')
-export class ExternalApiIntegrationController {
-  @Get('/')
-  @RawResponse() // <--- will skip wrapping
-  async findAll(): Promise<SomeCustomObject> {
-    return customObject;
-  }
-}
-```
-
-
-If you're adding StandardResponse into an existing app, it might be useful to invert this behavior to create a gradual transition path. To do this, set the ```interceptAll``` option to ```false``` when importing the ```StandardResponseModule``` in your application. This way, routes will only be wrapped if they have explicitly set the ```@StandardResponse()``` decorator. See more information in the "Configuring" section bellow.
-
-</br>
-
----------------------------------------------------
-
-</br>
 </br>
 </br>
 
-# Advanced configuration <a name="StandardResponseConfiguration"></a>
+# 🟠 &nbsp; Advanced configuration <a name="StandardResponseConfiguration"></a>
 
 ## ✅ validateResponse
 
