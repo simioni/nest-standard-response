@@ -273,9 +273,7 @@ async listBooks(
 
 <br />
 
-A decorator that wraps the return of a route into a standardized API response object (while still allowing the handler to return true DTOs or other model class instances).
-
-This makes interceptors like caching, ```ClassSerializer```, or ```RoleSerializer``` work transparently.
+A decorator that wraps the return of a route into a standardized API response object (while still allowing the handler to return true DTOs or other model class instances — this makes interceptors like caching, ```ClassSerializer```, or ```RoleSerializer``` work transparently.)
 
 The wrapper allows custom messages to be set in the response, and has optional features to handle common tasks, like **pagination, sorting and filtering**.
 
