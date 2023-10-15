@@ -199,7 +199,10 @@ For example, calling this route as:
 async listBooks(
   @StandardParam() params: StandardParams
 ): BookDto[] {
-  const { books, count } = await this.bookService.list({
+  const {
+    books,
+    count
+  } = await this.bookService.list({
     limit: params.pagination.limit,
     offset: params.pagination.offset,
     sort: params.sorting.sort,
@@ -210,9 +213,6 @@ async listBooks(
   params.setMessage('A full-featured example!')
   return books;
 }
-
-
-
 ```
 
 </td>
