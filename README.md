@@ -268,7 +268,6 @@ async listBooks(
 
 </br>
 </br>
-</br>
 
 ## 🟠 &nbsp; @StandardResponse(_options?:_ [_StandardResponseOptions_](#StandardResponseOptions)) <a name="StandardResponseDecorator"></a>
 
