@@ -121,9 +121,7 @@ To access this information during the request, use the [@StandardParam()](#Stand
 ```ts
 // route
 @get("/books")
-@StandardResponse({
-  isPaginated: true,
-})
+@StandardResponse({ isPaginated: true })
 async listBooks(
   @StandardParam() params: StandardParams
 ): BookDto[] {
@@ -162,8 +160,6 @@ async listBooks(
     { title: "Emma", year: 1815 },
   ]
 }
-
-
 
 ```
 
