@@ -180,7 +180,7 @@ For example, calling this route as:
 
 <table style="width: 100%">
 <tr>
-<td style="vertical-align: top;">
+<td>
 
 ```ts
 // route
@@ -213,6 +213,37 @@ async listBooks(
   params.setMessage('A full-featured example!')
   return books;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 </td>
