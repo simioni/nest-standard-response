@@ -29,6 +29,8 @@ $ npm install nest-standard-response
 ```app.module.ts```
 
 ```ts
+import { StandardResponseModule } from 'nest-standard-response';
+
 @Module({
   imports: [
     StandardResponseModule.forRoot(options), // options can be ommited
@@ -95,7 +97,7 @@ listBooks(): BookDto[] {
 
 ## 🚦 &nbsp; Wrapping only happens at the end of the NestJS' request pipeline
 
-### So interceptors like ```ClassSerializer``` and ```RoleSerializer``` work transparently without any custom logic.
+So interceptors like ```ClassSerializer``` and ```RoleSerializer``` work transparently without any custom logic.
 
 </br>
 
