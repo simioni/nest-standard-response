@@ -90,7 +90,9 @@ listBooks(): BookDto[] {
 </tr>
 </table>
 
-> To skip wrapping a particular route, just decorate the handler with [@RawResponse()](#RawResponseDecorator). It's possible to invert this behavior to **not wrap** any route automatically, and only wrap routes annotated with [@StandardResponse()](#StandardResponseDecorator) instead. [Check out how](#StandardResponseConfiguration-interceptAll).
+> To skip wrapping a particular route, just decorate the handler with [@RawResponse()](#RawResponseDecorator).
+
+> It's possible to **invert** this behavior to **not wrap** any route automatically, and only wrap routes annotated with [@StandardResponse()](#StandardResponseDecorator) instead. [Check out how](#StandardResponseConfiguration-interceptAll).
 
 <br />
 
