@@ -1,6 +1,6 @@
 {
   "name": "nest-standard-response",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Standardized and configurable API responses for NestJS",
   "main": "dist/index",
   "scripts": {
@@ -53,7 +53,9 @@
       "ts"
     ],
     "rootDir": "./",
-    "modulePaths": ["<rootDir>"],
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
