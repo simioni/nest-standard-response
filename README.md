@@ -166,7 +166,7 @@ async listBooks(
 
 Features can be freely combined, or used all at once.
 
-For example, calling this route as:
+For example, using the features shown bellow, the route could be called like this:
 
 >```/books?limit=8&offset=16&sort=-author,title&filter=author^=Frank;year>=1960;year>=1970```  
 > Note: This url was NOT url-encoded for readability (but you would need to encode yours)
