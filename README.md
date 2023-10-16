@@ -208,7 +208,7 @@ async listBooks(
     sort: params.sorting.sort,
     filter: params.filtering.filter,
   });
-  // ☝️ to see how the 'sort' and 'filter'
+  // 👆 to see how the 'sort' and 'filter'
   // params are parsed, look at the 
   // SortingInfo and FilteringInfo classes
   // in the @StandardParam() section of
