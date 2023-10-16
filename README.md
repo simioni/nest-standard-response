@@ -186,7 +186,7 @@ For example, calling this route as:
 // route
 @get("/books")
 @StandardResponse({
-  // declare type to get OpenApi documentation
+  // 👇 declare type to get OpenApi docs
   type: [BookDto],
   isPaginated: true,
   defaultLimit: 12,
@@ -208,17 +208,17 @@ async listBooks(
     sort: params.sorting.sort,
     filter: params.filtering.filter,
   });
-  // add extra information into the response
+  // ☝️ to see how the 'sort' and 'filter'
+  // params are parsed, look at the 
+  // SortingInfo and FilteringInfo classes
+  // in the @StandardParam() section of
+  // this document
+
+  // 👇 add extra information into the response
   params.setPaginationInfo({ count: count })
   params.setMessage('A full-featured example!')
   return books;
 }
-
-
-
-
-
-
 
 
 
