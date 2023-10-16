@@ -1,17 +1,10 @@
 # Standardized API responses for NestJS
 
-A big part of NestJS power comes from interceptors
-
-- Metadata-based wrapper to provide customizable standardized API response objects;
+- Metadata-based wrapper to provide customizable and standardized API response objects;
+- Built-in handling of pagination, sorting and filtering;
 - Allows route handlers to keep returning classes instead of wrapper objects, so they remain fully compatible with interceptors;
-- Optional built-in handling of pagination, sorting and filtering;
-
-
-
-- Standardized API responses, including:
-  - Automatic wrapping of the route handlers return object into a StandardResponse
-  - Generation of OpenAPI documentation for routes with proper response schema
-  - Generation of OpenAPI response examples with proper serialization for each user role
+- Automatic OpenAPI documentation with proper response schema for all features
+- Generation of OpenAPI response examples with proper serialization for each user role
 
 <br />
 
