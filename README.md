@@ -105,7 +105,7 @@ Just decorate a route with [@StandardResponse({...options})](#StandardResponseDe
 - Add fields to the response object to let the client know the state of these features (and to allow discoverability of defaults when the route is called without any query params);
 - Add documentation to Swagger with fully qualified schemas and examples;
 
-To access this information during the request, use the [@StandardParam()](#StandardParamDecorator) parameter decorator to inject a params object into your handler. This object contains the parsed  query params, all configuration values set for StandardResponse, plus methods to manipulate how this data shows up in the response.
+To access this information during the request, use the [@StandardParam()](#StandardParamDecorator) parameter decorator to inject a params object into your handler. This object contains the parsed query params, all the configuration values you set in the ```@StandardResponse()```, plus methods to manipulate and add data into the response.
 
 <table style="width: 100%">
 <tr>
