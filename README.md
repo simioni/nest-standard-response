@@ -1,5 +1,9 @@
 # Standardized API responses for NestJS
 
+![npm](https://img.shields.io/npm/dt/nest-standard-response?logo=npm&label=installs)
+![npm](https://img.shields.io/npm/dt/nest-standard-response?logo=npm&label=installs&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fnest-standard-response)
+![GitHub top language](https://img.shields.io/github/languages/top/simioni/nest-standard-response?logo=typescript)
+
 - Metadata-based wrapper to provide customizable and standardized API response objects;
 - Built-in handling of pagination, sorting and filtering;
 - Allows route handlers to keep returning classes instead of wrapper objects, so they remain fully compatible with interceptors;
