@@ -1,6 +1,6 @@
 {
   "name": "nest-standard-response",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Standardized and configurable API responses for NestJS",
   "main": "dist/index",
   "scripts": {
