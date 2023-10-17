@@ -1,7 +1,7 @@
 # Standardized API responses for NestJS
 
 <a href="https://www.npmjs.com/package/nest-standard-response" target="_blank"><img src="https://img.shields.io/npm/v/nest-standard-response" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/package/nest-standard-response" target="_blank"><img src="https://img.shields.io/npm/l/nest-standard-response" alt="Package License" /></a>
+<a href="https://github.com/simioni/nest-standard-response/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/npm/l/nest-standard-response" alt="Package License" /></a>
 <a href="https://app.circleci.com/pipelines/github/simioni/nest-standard-response" target="_blank"><img alt="CircleCI" src="https://img.shields.io/circleci/build/github/simioni/nest-standard-response/main?logo=circleci"></a>
 <a href="https://www.npmjs.com/package/nest-standard-response" target="_blank"><img alt="npm" src="https://img.shields.io/npm/dt/nest-standard-response?logo=npm&label=installs"></a>
 <a href="https://www.npmjs.com/package/nest-standard-response" target="_blank"><img alt="npm peer dependency version (scoped)" src="https://img.shields.io/npm/dependency-version/nest-standard-response/peer/%40nestjs%2Fcore?logo=nestjs"></a>
