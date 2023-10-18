@@ -146,12 +146,14 @@ export function StandardResponse<TModel extends ResponseModelType>({
       // $ref: getSchemaPath(returnType),
     },
   };
-  const dataObjSchema = {
-    ...(typeof returnType === "string"
-      ? { type: "string" }
-      : { $ref: getSchemaPath(returnType) }),
-    // $ref: getSchemaPath(returnType),
-  };
+  const dataObjSchema =
+    typeof returnType === "undefined"
+      ? {}
+      : {
+          ...(typeof returnType === "string"
+            ? { type: "string" }
+            : { $ref: getSchemaPath(returnType) }),
+        };
 
   decoratorsToApply.push(
     ApiResponse({
