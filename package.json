@@ -5,6 +5,7 @@
   "main": "dist/index",
   "scripts": {
     "build": "nest build",
+    "publish": "npm run test && npm run build && gh release create && npm publish",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
