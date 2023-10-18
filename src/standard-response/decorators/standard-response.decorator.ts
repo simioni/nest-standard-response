@@ -1,28 +1,30 @@
-import { applyDecorators } from '@nestjs/common';
+import { applyDecorators } from "@nestjs/common";
 import {
   ApiExtraModels,
   ApiOkResponse,
   ApiQuery,
+  ApiResponse,
   getSchemaPath,
-} from '@nestjs/swagger';
-import { StandardResponseDto } from '../dto/standard-response.dto';
+} from "@nestjs/swagger";
+import { StandardResponseDto } from "../dto/standard-response.dto";
 import {
   AnyClass,
   ResponseModelType,
   StandardResponseOptions,
-} from '../interfaces/standard-response-options.interface';
+} from "../interfaces/standard-response-options.interface";
 import {
   RESPONSE_FEATURES,
   RESPONSE_TYPE,
-} from '../standard-response.constants';
-import { SetStandardResponseFeatures } from './set-standard-response-features.decorator';
-import { SetStandardResponseFilteringInfo } from './set-standard-response-filtering-info.decorator';
-import { SetStandardResponsePaginationInfo } from './set-standard-response-pagination-info.decorator';
-import { SetStandardResponseSortingInfo } from './set-standard-response-sorting-info.decorator';
-import { SetStandardResponseType } from './set-standard-response-type.decorator';
+} from "../standard-response.constants";
+import { SetStandardResponseFeatures } from "./set-standard-response-features.decorator";
+import { SetStandardResponseFilteringInfo } from "./set-standard-response-filtering-info.decorator";
+import { SetStandardResponsePaginationInfo } from "./set-standard-response-pagination-info.decorator";
+import { SetStandardResponseSortingInfo } from "./set-standard-response-sorting-info.decorator";
+import { SetStandardResponseType } from "./set-standard-response-type.decorator";
 
 export function StandardResponse<TModel extends ResponseModelType>({
   type,
+  status = 200,
   description,
   isPaginated,
   isSorted,
@@ -46,11 +48,11 @@ export function StandardResponse<TModel extends ResponseModelType>({
   }
 
   const helpText = [];
-  if (typeof minLimit !== 'undefined') helpText.push(`min: ${minLimit}`);
-  if (typeof maxLimit !== 'undefined') helpText.push(`max: ${maxLimit}`);
-  if (typeof defaultLimit !== 'undefined')
+  if (typeof minLimit !== "undefined") helpText.push(`min: ${minLimit}`);
+  if (typeof maxLimit !== "undefined") helpText.push(`max: ${maxLimit}`);
+  if (typeof defaultLimit !== "undefined")
     helpText.push(`default: ${defaultLimit}`);
-  const limitHelpText = helpText.length > 0 ? ` (${helpText.join(', ')})` : '';
+  const limitHelpText = helpText.length > 0 ? ` (${helpText.join(", ")})` : "";
 
   const responseFeatures = [];
   if (isPaginated) responseFeatures.push(RESPONSE_FEATURES.PAGINATION);
@@ -67,7 +69,7 @@ export function StandardResponse<TModel extends ResponseModelType>({
     ApiExtraModels(StandardResponseDto),
   ];
 
-  if (typeof returnType === 'function') {
+  if (typeof returnType === "function") {
     decoratorsToApply.push(ApiExtraModels(returnType));
   }
 
@@ -79,19 +81,19 @@ export function StandardResponse<TModel extends ResponseModelType>({
         defaultLimit: defaultLimit,
       }),
       ApiQuery({
-        name: 'limit',
+        name: "limit",
         required: false,
         description: `How many items to retrieve${limitHelpText}:`,
         // example: defaultLimit,
         // schema: { type: 'integer', minimum: minLimit, maximum: maxLimit },
       }),
       ApiQuery({
-        name: 'offset',
+        name: "offset",
         required: false,
-        description: 'How many items to skip from beggining of list:',
+        description: "How many items to skip from beggining of list:",
         // example: offsetDefault,
         // schema: { type: 'integer', minimum: 0 },
-      }),
+      })
     );
   }
 
@@ -101,12 +103,12 @@ export function StandardResponse<TModel extends ResponseModelType>({
         sortableFields: sortableFields,
       }),
       ApiQuery({
-        name: 'sort',
+        name: "sort",
         required: false,
         description: `A list of properties used to sort the results. Properties must be separated by comma, and optionally preceded by a minus sign. (Ex: '-popularity,title' )`,
         // example: ['-popularity,name'],
         // schema: { type: 'string' },
-      }),
+      })
     );
   }
 
@@ -116,7 +118,7 @@ export function StandardResponse<TModel extends ResponseModelType>({
         filterableFields: filterableFields,
       }),
       ApiQuery({
-        name: 'filter',
+        name: "filter",
         required: false,
         description: `Restricts results based on filters. A filter is composed of a property name, followed by an operator and a value. (Ex: 'country==Italy'). Filters can be combined using a comma (,) for the OR operation, or a semi-colon (;) for the AND operation. (Ex: to filter by country being equal to Italy or Germany, and year 2010 and later: 'country==Italy,country==Germany;year>=2010')
         Possible operators are:
@@ -131,39 +133,40 @@ export function StandardResponse<TModel extends ResponseModelType>({
         These rules are similar to APIs like Google Analytics or Matomo Analytics. For more info, see: https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters and https://developer.matomo.org/api-reference/reporting-api-segmentation`,
         // example: 'country==Italy,country==Germany;year>=2010',
         // schema: { type: 'string' },
-      }),
+      })
     );
   }
 
   const dataArraySchema = {
-    type: 'array',
+    type: "array",
     items: {
-      ...(typeof returnType === 'string'
-        ? { type: 'string' }
+      ...(typeof returnType === "string"
+        ? { type: "string" }
         : { $ref: getSchemaPath(returnType) }),
       // $ref: getSchemaPath(returnType),
     },
   };
   const dataObjSchema = {
-    ...(typeof returnType === 'string'
-      ? { type: 'string' }
+    ...(typeof returnType === "string"
+      ? { type: "string" }
       : { $ref: getSchemaPath(returnType) }),
     // $ref: getSchemaPath(returnType),
   };
 
   decoratorsToApply.push(
-    ApiOkResponse({
+    ApiResponse({
+      status: status,
       description: description,
       content: {
-        'application/json': {
+        "application/json": {
           schema: {
             title: returnType
               ? `StandardResponseOf${
-                  typeof returnType === 'string'
+                  typeof returnType === "string"
                     ? returnType[0].toUpperCase() + returnType.slice(1)
                     : returnType.name
                 }`
-              : 'StandardResponse',
+              : "StandardResponse",
             allOf: [
               { $ref: getSchemaPath(StandardResponseDto) },
               {
@@ -184,7 +187,7 @@ export function StandardResponse<TModel extends ResponseModelType>({
           // },
         },
       },
-    }),
+    })
   );
 
   return applyDecorators(...decoratorsToApply);
